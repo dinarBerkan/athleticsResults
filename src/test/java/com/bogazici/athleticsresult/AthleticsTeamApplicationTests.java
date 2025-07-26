@@ -1,4 +1,4 @@
-package com.bogazici.athleticsteam;
+package com.bogazici.athleticsresult;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

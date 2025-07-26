@@ -1,4 +1,4 @@
-package com.bogazici.athleticsteam;
+package com.bogazici.athleticsresult;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

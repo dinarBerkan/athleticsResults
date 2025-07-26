@@ -1,4 +1,4 @@
-package com.bogazici.athleticsteam;
+package com.bogazici.athleticsresult;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
