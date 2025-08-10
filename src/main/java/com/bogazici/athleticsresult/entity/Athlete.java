@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(schema = "ATHRESULT", name = "ATHLETE")
@@ -26,8 +27,11 @@ public class Athlete implements Serializable {
     private String name;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date birthdate;
+    private Date birthDate;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @OneToMany(mappedBy = "athlete")
+    private List<Result> resultList;
 }

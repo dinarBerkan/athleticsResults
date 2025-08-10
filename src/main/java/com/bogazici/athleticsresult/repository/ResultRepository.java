@@ -1,0 +1,7 @@
+package com.bogazici.athleticsresult.repository;
+
+import com.bogazici.athleticsresult.entity.Result;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ResultRepository extends JpaRepository<Result, Long> {
+}

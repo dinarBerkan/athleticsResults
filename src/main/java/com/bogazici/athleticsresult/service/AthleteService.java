@@ -28,7 +28,7 @@ public class AthleteService {
             Athlete athlete = athleteOptional.get();
             AthleteDto athleteDto = AthleteDto.builder().id(athlete.getId())
                                                         .name(athlete.getName())
-                                                        .birthdate(athlete.getBirthdate())
+                                                        .birthdate(athlete.getBirthDate())
                                                         .gender(athlete.getGender())
                                                         .build();
             response.setAthlete(athleteDto);
@@ -37,8 +37,18 @@ public class AthleteService {
     }
 
     public CreateAthleteResponse createAthlete(CreateAthleteRequest request) {
-        Athlete athlete = Athlete.builder().name(request.getAthleteName()).birthdate(request.getAthleteBirthDate()).gender(Gender.valueOf(request.getAthleteGender())).build();
+        Athlete athlete = Athlete.builder().name(request.getAthleteName()).birthDate(request.getAthleteBirthDate()).gender(Gender.valueOf(request.getAthleteGender())).build();
         Athlete savedAthlete = athleteRepository.save(athlete);
         return CreateAthleteResponse.builder().success(Boolean.TRUE).message("Athlete created successfully.").athleteId(savedAthlete.getId()).build();
+    }
+
+    public Athlete getAthleteForResult(Long athleteId) {
+        Optional<Athlete> athleteOptional = athleteRepository.findById(athleteId);
+        if (athleteOptional.isPresent()) {
+            return athleteOptional.get();
+
+        } else {
+            throw new RuntimeException("Athlete with id " + athleteId + " not found");
+        }
     }
 }
