@@ -1,2 +1,2 @@
 # athleticsResults
-A project for uploading and retrieving athletics race results
+A monolith java backend project for uploading and retrieving athletics race results
