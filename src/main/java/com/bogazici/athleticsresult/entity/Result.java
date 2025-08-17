@@ -23,11 +23,11 @@ public class Result implements Serializable {
 
     private String competitionName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "athlete_id")
     private Athlete athlete;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id")
     private Event event;
 

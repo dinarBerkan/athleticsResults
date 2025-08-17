@@ -3,6 +3,7 @@ package com.bogazici.athleticsresult.service;
 import com.bogazici.athleticsresult.dto.AthleteDto;
 import com.bogazici.athleticsresult.entity.Athlete;
 import com.bogazici.athleticsresult.enumeration.Gender;
+import com.bogazici.athleticsresult.mapper.AthleteMapper;
 import com.bogazici.athleticsresult.repository.AthleteRepository;
 import com.bogazici.athleticsresult.request.CreateAthleteRequest;
 import com.bogazici.athleticsresult.response.CreateAthleteResponse;
@@ -16,9 +17,12 @@ import java.util.Optional;
 public class AthleteService {
     private final AthleteRepository athleteRepository;
 
+    private final AthleteMapper athleteMapper;
+
     @Autowired
-    AthleteService(AthleteRepository athleteRepository) {
+    AthleteService(AthleteRepository athleteRepository, AthleteMapper athleteMapper) {
         this.athleteRepository = athleteRepository;
+        this.athleteMapper = athleteMapper;
     }
 
     public GetAthleteInformationResponse getAthleteInformation(Long athleteId) {
@@ -26,11 +30,7 @@ public class AthleteService {
         Optional<Athlete> athleteOptional = athleteRepository.findById(athleteId);
         if (athleteOptional.isPresent()) {
             Athlete athlete = athleteOptional.get();
-            AthleteDto athleteDto = AthleteDto.builder().id(athlete.getId())
-                                                        .name(athlete.getName())
-                                                        .birthdate(athlete.getBirthDate())
-                                                        .gender(athlete.getGender())
-                                                        .build();
+            AthleteDto athleteDto = athleteMapper.athleteToAthleteDto(athlete);
             response.setAthlete(athleteDto);
         }
         return response;

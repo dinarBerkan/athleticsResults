@@ -4,7 +4,8 @@ import com.bogazici.athleticsresult.enumeration.Gender;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
+import java.util.List;
+
 
 @Data
 @Builder
@@ -13,7 +14,9 @@ public class AthleteDto {
 
     private String name;
 
-    private Date birthdate;
+    private String birthDate;
 
     private Gender gender;
+
+    private List<ResultDto> resultList;
 }
