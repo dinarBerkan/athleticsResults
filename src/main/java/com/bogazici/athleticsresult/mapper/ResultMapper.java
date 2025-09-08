@@ -3,11 +3,12 @@ package com.bogazici.athleticsresult.mapper;
 import com.bogazici.athleticsresult.dto.ResultDto;
 import com.bogazici.athleticsresult.entity.Result;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "spring")
+import java.util.List;
+
+@Mapper(componentModel = "spring", uses = {AthleteMapper.class, EventMapper.class})
 public interface ResultMapper {
-    ResultMapper INSTANCE = Mappers.getMapper(ResultMapper.class);
-
     ResultDto resultToResultDto(Result result);
+
+    List<ResultDto> resultToResultDtoList(List<Result> resultList);
 }

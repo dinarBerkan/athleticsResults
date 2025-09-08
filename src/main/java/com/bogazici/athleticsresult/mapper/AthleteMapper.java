@@ -5,14 +5,13 @@ import com.bogazici.athleticsresult.entity.Athlete;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
-import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {ResultMapper.class})
 public interface AthleteMapper {
-    AthleteMapper INSTANCE = Mappers.getMapper(AthleteMapper.class);
 
     @Mappings({
-            @Mapping(target = "birthDate", source = "birthDate", dateFormat = "yyyy-MM-dd")
+            @Mapping(target = "birthDate", source = "birthDate", dateFormat = "yyyy-MM-dd"),
+            @Mapping(target = "resultList", ignore = true)
     })
     AthleteDto athleteToAthleteDto(Athlete athlete);
 }
