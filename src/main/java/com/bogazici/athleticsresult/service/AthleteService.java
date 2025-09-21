@@ -38,10 +38,10 @@ public class AthleteService {
         if (athleteOptional.isPresent()) {
             Athlete athlete = athleteOptional.get();
             AthleteDto athleteDto = athleteMapper.athleteToAthleteDto(athlete);
-            /*if(!CollectionUtils.isEmpty(athlete.getResultList())) {
+            if(!CollectionUtils.isEmpty(athlete.getResultList())) {
                 List<ResultDto> resultDtoList = resultMapper.resultToResultDtoList(athlete.getResultList());
                 athleteDto.setResultList(resultDtoList);
-            }*/
+            }
             response.setAthlete(athleteDto);
         }
         return response;
