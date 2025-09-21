@@ -8,7 +8,9 @@ import com.bogazici.athleticsresult.mapper.AthleteMapper;
 import com.bogazici.athleticsresult.mapper.ResultMapper;
 import com.bogazici.athleticsresult.repository.AthleteRepository;
 import com.bogazici.athleticsresult.request.CreateAthleteRequest;
+import com.bogazici.athleticsresult.request.DeleteAthleteRequest;
 import com.bogazici.athleticsresult.response.CreateAthleteResponse;
+import com.bogazici.athleticsresult.response.DeleteAthleteResponse;
 import com.bogazici.athleticsresult.response.GetAthleteInformationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,5 +63,19 @@ public class AthleteService {
         } else {
             throw new RuntimeException("Athlete with id " + athleteId + " not found");
         }
+    }
+
+    public DeleteAthleteResponse deleteAthlete(DeleteAthleteRequest request) {
+        Athlete athleteToDelete = athleteRepository.findById(request.getAthleteId()).orElse(null);
+        DeleteAthleteResponse response = DeleteAthleteResponse.builder().build();
+        if (athleteToDelete != null) {
+            athleteRepository.delete(athleteToDelete);
+            response.setResult(Boolean.TRUE);
+            response.setMessage("Athlete deleted successfully.");
+        } else {
+            response.setResult(Boolean.FALSE);
+            response.setMessage("Athlete with id " + request.getAthleteId() + " not found.");
+        }
+        return response;
     }
 }

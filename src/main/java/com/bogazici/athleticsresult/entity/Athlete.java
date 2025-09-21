@@ -32,6 +32,6 @@ public class Athlete implements Serializable {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @OneToMany(mappedBy = "athlete", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "athlete", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Result> resultList;
 }
