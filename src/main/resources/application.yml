@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: athleticsTeam
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
+    driver-class-name: oracle.jdbc.OracleDriver
+    username: system
+    password: asd123
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+  mvc:
+    format:
+      date: yyyy-MM-dd
