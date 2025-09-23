@@ -1,6 +1,6 @@
 package com.bogazici.athleticsresult.entity;
 
-import com.bogazici.athleticsresult.enumeration.EventType;
+import com.bogazici.athleticsresult.enumeration.Gender;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,6 +11,8 @@ import java.io.Serializable;
 
 @Entity
 @Table(schema = "ATHRESULT", name = "EVENT")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "event_type", discriminatorType = DiscriminatorType.STRING)
 @Data
 @Builder
 @NoArgsConstructor
@@ -23,5 +25,5 @@ public class Event implements Serializable {
     private String eventName;
 
     @Enumerated(EnumType.STRING)
-    private EventType eventType;
+    private Gender gender;
 }
