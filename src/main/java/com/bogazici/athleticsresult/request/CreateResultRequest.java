@@ -1,7 +1,6 @@
 package com.bogazici.athleticsresult.request;
 
-import com.bogazici.athleticsresult.dto.AthleteDto;
-import com.bogazici.athleticsresult.dto.EventDto;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
 
@@ -20,6 +19,7 @@ public class CreateResultRequest {
 
     private String resultMark;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date resultDate;
 
     private String resultLocation;

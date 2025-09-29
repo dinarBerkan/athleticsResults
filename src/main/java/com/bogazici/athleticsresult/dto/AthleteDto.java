@@ -1,11 +1,11 @@
 package com.bogazici.athleticsresult.dto;
 
 import com.bogazici.athleticsresult.enumeration.Gender;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
-
 
 @Data
 @Builder
@@ -18,5 +18,6 @@ public class AthleteDto {
 
     private Gender gender;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<ResultDto> resultList;
 }

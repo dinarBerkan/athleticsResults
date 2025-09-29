@@ -1,5 +1,6 @@
 package com.bogazici.athleticsresult.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class ResultDto {
 
     private String resultMark;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date resultDate;
 
     private String resultLocation;
