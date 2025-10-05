@@ -18,6 +18,7 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class AthleteService {
@@ -34,7 +35,7 @@ public class AthleteService {
         this.resultMapper = resultMapper;
     }
 
-    public GetAthleteInformationResponse getAthleteInformation(Long athleteId) {
+    public GetAthleteInformationResponse getAthleteInformation(UUID athleteId) {
         GetAthleteInformationResponse response = new GetAthleteInformationResponse();
         Optional<Athlete> athleteOptional = athleteRepository.findById(athleteId);
         if (athleteOptional.isPresent()) {
@@ -55,7 +56,7 @@ public class AthleteService {
         return CreateAthleteResponse.builder().success(Boolean.TRUE).message("Athlete created successfully.").athleteId(savedAthlete.getId()).build();
     }
 
-    public Athlete getAthleteForResult(Long athleteId) {
+    public Athlete getAthleteForResult(UUID athleteId) {
         Optional<Athlete> athleteOptional = athleteRepository.findById(athleteId);
         if (athleteOptional.isPresent()) {
             return athleteOptional.get();

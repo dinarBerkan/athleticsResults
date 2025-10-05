@@ -9,6 +9,8 @@ import com.bogazici.athleticsresult.service.AthleteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("athlete")
 public class AthleteController {
@@ -20,7 +22,7 @@ public class AthleteController {
     }
 
     @GetMapping("/get-athlete-information")
-    public GetAthleteInformationResponse getAthleteInformation(@RequestParam Long athleteId) {
+    public GetAthleteInformationResponse getAthleteInformation(@RequestParam UUID athleteId) {
         return athleteService.getAthleteInformation(athleteId);
     }
 

@@ -23,6 +23,7 @@ import org.springframework.test.context.ContextConfiguration;
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 @ContextConfiguration(classes = {ResultMapperImpl.class, AthleteMapperImpl.class})
 class AthleteServiceTest {
-    private static final Long ATHLETE_ID = 1L;
+    private static final UUID ATHLETE_ID = UUID.randomUUID();
 
     private static final String ATHLETE_NAME = "Athlete";
 

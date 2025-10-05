@@ -3,6 +3,8 @@ package com.bogazici.athleticsresult.response;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 @Builder
 public class CreateAthleteResponse {
@@ -10,5 +12,5 @@ public class CreateAthleteResponse {
 
     private String message;
 
-    private Long athleteId;
+    private UUID athleteId;
 }

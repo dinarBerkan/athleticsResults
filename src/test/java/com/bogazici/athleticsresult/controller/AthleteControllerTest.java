@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.sql.Date;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,7 +23,7 @@ class AthleteControllerTest {
 
     private static final String ATHLETE_NAME = "TestAthlete";
 
-    private static final Long ATHLETE_ID = 1L;
+    private static final UUID ATHLETE_ID = UUID.randomUUID();
 
     @Mock
     AthleteService athleteService;
