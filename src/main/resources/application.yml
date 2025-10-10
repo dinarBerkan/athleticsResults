@@ -6,6 +6,9 @@ spring:
     driver-class-name: oracle.jdbc.OracleDriver
     username: system
     password: asd123
+  sql:
+    init:
+      mode: always
   jpa:
     database-platform: org.hibernate.dialect.OracleDialect
     defer-datasource-initialization: true
