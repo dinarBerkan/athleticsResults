@@ -40,7 +40,7 @@ public class Athlete implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "COUNTRY_ID", nullable = false)
-    private AthleteCountry athleteCountry;
+    private Country country;
 
     @OneToMany(mappedBy = "athlete", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Result> resultList;

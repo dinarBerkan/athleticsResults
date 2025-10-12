@@ -8,9 +8,9 @@ import java.util.Set;
 
 
 @Entity
-@Table(schema = "ATHRESULT", name = "ATH_COUNTRY")
+@Table(schema = "ATHRESULT", name = "COUNTRY")
 @Data
-public class AthleteCountry {
+public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +23,10 @@ public class AthleteCountry {
     @Column(length = 50)
     private String countryName;
 
-    @OneToMany(mappedBy = "athleteCountry", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Athlete> athletes;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "area_code", referencedColumnName = "areaCode", nullable = false)
+    private Area area;
 }
