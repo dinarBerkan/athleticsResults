@@ -23,10 +23,8 @@ public class ResultService {
         Athlete resultAthlete = athleteService.getAthleteForResult(request.getAthleteId());
         Event event = eventService.getEventForResult(request.getEventId());
         Result result = Result.builder().athlete(resultAthlete).event(event)
-                .competitionName(request.getCompetitionName())
                 .resultMark(request.getResultMark())
                 .resultDate(request.getResultDate())
-                .resultLocation(request.getResultLocation())
                 .build();
         resultRepository.save(result);
         return CreateResultResponse.builder().success(true).resultId(result.getId()).build();

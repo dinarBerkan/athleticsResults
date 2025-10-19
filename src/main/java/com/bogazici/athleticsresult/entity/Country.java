@@ -26,6 +26,9 @@ public class Country {
     @OneToMany(mappedBy = "country", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Athlete> athletes;
 
+    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Competition> competitions;
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "area_code", referencedColumnName = "areaCode", nullable = false)
     private Area area;

@@ -22,16 +22,17 @@ public class Result implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
-    private String competitionName;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "athlete_id", nullable = false)
     private Athlete athlete;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "event_id", nullable = false)
     private Event event;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "competition_id", nullable = false)
+    private Competition competition;
 
     @NotNull
     private String resultMark;
@@ -39,7 +40,4 @@ public class Result implements Serializable {
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date resultDate;
-
-    @NotNull
-    private String resultLocation;
 }
