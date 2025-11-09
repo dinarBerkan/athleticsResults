@@ -1,6 +1,5 @@
 package com.bogazici.athleticsresult.dto;
 
-import com.bogazici.athleticsresult.entity.Country;
 import lombok.Builder;
 import lombok.Data;
 
@@ -19,5 +18,5 @@ public class CompetitionDto {
 
     private Date endDate;
 
-    private Country country;
+    private String countryCode;
 }

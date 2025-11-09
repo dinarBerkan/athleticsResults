@@ -1,13 +1,12 @@
 package com.bogazici.athleticsresult.controller;
 
 import com.bogazici.athleticsresult.request.CreateCompetitionRequest;
+import com.bogazici.athleticsresult.request.DeleteCompetitionRequest;
 import com.bogazici.athleticsresult.response.CreateCompetitionResponse;
+import com.bogazici.athleticsresult.response.DeleteCompetitionResponse;
 import com.bogazici.athleticsresult.service.CompetitionService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("competition")
@@ -18,5 +17,10 @@ public class CompetitionController {
     @PostMapping("/create")
     public CreateCompetitionResponse createCompetition(@RequestBody CreateCompetitionRequest request) {
         return competitionService.createCompetition(request);
+    }
+
+    @DeleteMapping("/delete")
+    public DeleteCompetitionResponse deleteCompetition(@RequestBody DeleteCompetitionRequest request) {
+        return competitionService.deleteCompetition(request);
     }
 }
