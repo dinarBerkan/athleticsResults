@@ -12,4 +12,7 @@ public class CreateAthleteRequest {
     private Date athleteBirthDate;
 
     private String athleteGender;
+
+
+    private String athleteCountry;
 }

@@ -18,7 +18,7 @@ public class ResultController {
 
 
     @PostMapping("/create-result")
-    public CreateResultResponse createAthlete(@RequestBody CreateResultRequest request) {
+    public CreateResultResponse createResult(@RequestBody CreateResultRequest request) {
         return resultService.createResult(request); //Indoor ve Outdoor durumuna bak, rüzgar'ı ona göre ekle
     }
 }

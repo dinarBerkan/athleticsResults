@@ -3,6 +3,7 @@ package com.bogazici.athleticsresult.service;
 import com.bogazici.athleticsresult.dto.AthleteDto;
 import com.bogazici.athleticsresult.dto.ResultDto;
 import com.bogazici.athleticsresult.entity.Athlete;
+import com.bogazici.athleticsresult.entity.Country;
 import com.bogazici.athleticsresult.enumeration.Gender;
 import com.bogazici.athleticsresult.mapper.AthleteMapper;
 import com.bogazici.athleticsresult.mapper.ResultMapper;
@@ -24,15 +25,18 @@ import java.util.UUID;
 public class AthleteService {
     private final AthleteRepository athleteRepository;
 
+    private final CountryService countryService;
+
     private final AthleteMapper athleteMapper;
 
     private final ResultMapper resultMapper;
 
     @Autowired
-    AthleteService(AthleteRepository athleteRepository, AthleteMapper athleteMapper, ResultMapper resultMapper) {
+    AthleteService(AthleteRepository athleteRepository, CountryService countryService, AthleteMapper athleteMapper, ResultMapper resultMapper) {
         this.athleteRepository = athleteRepository;
         this.athleteMapper = athleteMapper;
         this.resultMapper = resultMapper;
+        this.countryService = countryService;
     }
 
     public GetAthleteInformationResponse getAthleteInformation(UUID athleteId) {
@@ -51,7 +55,8 @@ public class AthleteService {
     }
 
     public CreateAthleteResponse createAthlete(CreateAthleteRequest request) {
-        Athlete athlete = Athlete.builder().name(request.getAthleteName()).birthDate(request.getAthleteBirthDate()).gender(Gender.valueOf(request.getAthleteGender())).build();
+        Country country = countryService.getCountryByCountryCode(request.getAthleteCountry());
+        Athlete athlete = Athlete.builder().name(request.getAthleteName()).birthDate(request.getAthleteBirthDate()).country(country).gender(Gender.valueOf(request.getAthleteGender())).build();
         Athlete savedAthlete = athleteRepository.save(athlete);
         return CreateAthleteResponse.builder().success(Boolean.TRUE).message("Athlete created successfully.").athleteId(savedAthlete.getId()).build();
     }

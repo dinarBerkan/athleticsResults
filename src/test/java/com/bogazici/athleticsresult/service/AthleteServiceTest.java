@@ -42,13 +42,16 @@ class AthleteServiceTest {
     @Mock
     private static AthleteRepository athleteRepository;
 
+    @Mock
+    private static CountryService countryService;
+
     @InjectMocks
     private static AthleteService athleteService;
 
     @BeforeAll
     static void setUp() {
         athleteRepository = Mockito.mock(AthleteRepository.class);
-        athleteService = new AthleteService(athleteRepository, Mappers.getMapper(AthleteMapper.class), Mappers.getMapper(ResultMapper.class));
+        athleteService = new AthleteService(athleteRepository, countryService, Mappers.getMapper(AthleteMapper.class), Mappers.getMapper(ResultMapper.class));
     }
 
     @Test

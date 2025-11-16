@@ -28,7 +28,7 @@ public class ResultControllerTest {
         Mockito.when(resultService.createResult(request)).thenReturn(response);
 
         //when
-        CreateResultResponse returningResponse = resultController.createAthlete(request);
+        CreateResultResponse returningResponse = resultController.createResult(request);
 
         //then
         assertNotNull(returningResponse);

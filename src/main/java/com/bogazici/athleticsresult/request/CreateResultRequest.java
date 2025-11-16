@@ -5,16 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Data
 @Builder
 public class CreateResultRequest {
     private Long id;
 
-    private String competitionName;
+    private String competitionId;
 
-    private UUID athleteId;
+    private String athleteId;
 
     private Long eventId;
 

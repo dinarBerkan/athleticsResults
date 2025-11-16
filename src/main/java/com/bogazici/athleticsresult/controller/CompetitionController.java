@@ -4,6 +4,7 @@ import com.bogazici.athleticsresult.request.CreateCompetitionRequest;
 import com.bogazici.athleticsresult.request.DeleteCompetitionRequest;
 import com.bogazici.athleticsresult.response.CreateCompetitionResponse;
 import com.bogazici.athleticsresult.response.DeleteCompetitionResponse;
+import com.bogazici.athleticsresult.response.GetCompetitionInformationResponse;
 import com.bogazici.athleticsresult.service.CompetitionService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +23,10 @@ public class CompetitionController {
     @DeleteMapping("/delete")
     public DeleteCompetitionResponse deleteCompetition(@RequestBody DeleteCompetitionRequest request) {
         return competitionService.deleteCompetition(request);
+    }
+
+    @GetMapping("/get-competition-information")
+    public GetCompetitionInformationResponse getCompetitionInformation(@RequestParam String competitionId) {
+        return competitionService.getCompetitionInformation(competitionId);
     }
 }
